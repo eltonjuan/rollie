@@ -1,0 +1,16 @@
+{
+  "name": "rolly",
+  "version": "0.0.6",
+  "description": "Dust helper for use with the Rollbar client",
+  "main": "dist/index.js",
+  "scripts": {
+  	"prepublish": "npm run build",
+    "build": "babel src --out-dir dist --copy-file",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "^6.1.18"
+  }
+}
