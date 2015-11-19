@@ -19,6 +19,6 @@ if (dust) {
 		console.log(context);
 		var head = '\n\t\t\t<script>\n\t\t\t\tvar _rollbarConfig = ' + conf + ';\n\t\t\t\t' + _rollbarSnippet.rollbarSnippet + '\n\t\t\t</script>\n\t\t';
 
-		return chunk.write(head);
+		return chunk.write(chunk);
 	};
 }

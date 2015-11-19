@@ -22,6 +22,6 @@ if (dust) {
 			</script>
 		`
 
-		return chunk.write(head);
+		return chunk.write(chunk);
 	}
 }
