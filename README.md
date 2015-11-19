@@ -31,10 +31,10 @@ With the first option, Rollie will look for a variable `rollbarConfig` within th
 #### Option 2 - File path
 ```html
 <head>
-    {@rollbar configPath="config/rollbar.json"}
+    {@rollbar configPath="config/rollbar.json" /}
 </head>
 ```
-With the second option, Rollie will use the application's entry point by referencing `require.main.filename` and then attempt to resolve and parse the `.json` config file provided in the `configPath` parameter. 
+With the second option, Rollie will use the application's entry point by referencing `require.main.filename` and then attempt to resolve and parse the `.json` config file provided in the `configPath` parameter. This path should be relative to the root of your project.
 
 **Note:** Rollie doesn't make any attempt to validate your Rollbar configuration object! So take a look at their [docs](https://rollbar.com/docs/notifier/rollbar.js/) and follow the instructions!
 
