@@ -27,3 +27,5 @@ www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-g
 
 # Node Modules
 node_modules
+
+dist/

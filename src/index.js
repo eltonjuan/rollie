@@ -14,7 +14,7 @@ import path from 'path';
 if (dust) {
 	dust.helpers.rollbar = function(chunk, context, bodies, params) {
 		let conf;
-		
+		const baseDir = path.join(path.dirname(require.main.filename));
 		if (context.get('rollbarConfig')) {
 			// we have a rollbar config in our context, attempt to parse it
 			try {
@@ -43,4 +43,5 @@ if (dust) {
 			</script>
 		`
 		return chunk.write(head);
+	}
 }
