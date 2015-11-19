@@ -5,6 +5,8 @@ Rollie is a super-simple, small (some might even call it cute) Dust helper to ai
 
 Named after an amazing baseball player with an amazing mustache. 
 
+[![npm version](https://badge.fury.io/js/rollie.svg)](https://badge.fury.io/js/rollie)
+
 ## Installation
 ```bash
 $ npm install rollie
