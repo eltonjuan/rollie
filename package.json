@@ -1,6 +1,6 @@
 {
   "name": "rollie",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Dust helper for use with the Rollbar client",
   "main": "dist/index.js",
   "scripts": {
@@ -8,6 +8,10 @@
     "build": "babel src --out-dir dist --copy-file",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bugs": {
+    "url": "https://github.com/eltonjuan/rollie/issues"
+  },
+  "keywords": ["dust", "rollbar", "rollbar dust", "client rollbar"],
   "author": "Michael Amos",
   "repository": {
     "type": "git",

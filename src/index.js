@@ -8,7 +8,7 @@ if (dust) {
     if (context.get('rollbarConfig')) {
       // we have a rollbar config in our context, attempt to parse it
       try {
-        conf = JSON.stringify(context.get('rollbarConfig'));
+        conf = context.get('rollbarConfig');
       } catch (e) {
         console.error('Error parsing rollbarConfig from Dust context');
         throw e;
@@ -16,7 +16,7 @@ if (dust) {
     } else if (params.configPath) {
       // we have a path from which we will attempt to parse the rollbar config
       try {
-        conf = JSON.stringify(require(path.join(baseDir, params.configPath)));
+        conf = require(path.join(baseDir, params.configPath));
       } catch (e) {
         console.error('Error reading Rollbar config from filesystem')
         throw e;
@@ -26,9 +26,15 @@ if (dust) {
       return;
     }
 
+    Object.keys(params).map(key => {
+      if (conf.hasOwnProperty(key)) {
+        conf[key] = params[key];
+      }
+    });
+
     const head = `
       <script>
-        var _rollbarConfig = ${conf};
+        var _rollbarConfig = ${JSON.stringify(conf)};
         ${rollbarSnippet}
       </script>
     `
