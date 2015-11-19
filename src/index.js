@@ -1,15 +1,5 @@
 import {rollbarSnippet} from './rollbar-snippet';
 import path from 'path';
-/**
- * Rollbar Dust Helper
- *
- * Usage: In your page's JavaScript, reference this helper: 
- *   import 'rolly'
- *
- * In your page's Dust template, you can now reference this helper: 
- * 
- * {@rollbar configPath='.config/rollbar.json' }
- */
 
 if (dust) {
   dust.helpers.rollbar = function(chunk, context, bodies, params) {
