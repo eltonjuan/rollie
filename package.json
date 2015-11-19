@@ -1,6 +1,6 @@
 {
   "name": "rollie",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Dust helper for use with the Rollbar client",
   "main": "dist/index.js",
   "scripts": {
