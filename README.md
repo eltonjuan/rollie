@@ -1,7 +1,9 @@
 
 # Rollie
 
-Rollie is a super-simple, small (some might even call it cute) Dust helper to aid with [Rollbar](https://www.rollbar.com) integration. Named after an amazing baseball player with an amazing mustache. 
+Rollie is a super-simple, small (some might even call it cute) Dust helper to aid with [Rollbar](https://www.rollbar.com) integration. Rollie provides a simple way to include the client Rollbar snippet in your application.
+
+Named after an amazing baseball player with an amazing mustache. 
 
 ## Installation
 ```bash
