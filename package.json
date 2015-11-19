@@ -1,6 +1,6 @@
 {
   "name": "rollie",
-  "version": "0.15.0",
+  "version": "0.1.0",
   "description": "Dust helper for use with the Rollbar client",
   "main": "dist/index.js",
   "scripts": {
@@ -8,12 +8,13 @@
     "build": "babel src --out-dir dist --copy-file",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Michael Amos",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eltonjuan/rollie"
+  },
+  "license": "MIT",
   "devDependencies": {
     "babel": "^6.1.18"
-  },
-  "dependencies": {
-    "babel": "^5.8.34"
   }
 }
