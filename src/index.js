@@ -1,5 +1,5 @@
-import {rollbarSnippet, defaultConfig} from './rollbar-snippet';
-
+import {rollbarSnippet} from './rollbar-snippet';
+import path from 'path';
 /**
  * Rollbar Dust Helper
  *
@@ -8,20 +8,39 @@ import {rollbarSnippet, defaultConfig} from './rollbar-snippet';
  *
  * In your page's Dust template, you can now reference this helper: 
  * 
- * {@rollbar accessToken='YOUR_ROLLBAR_ACCESS_TOKEN' }
+ * {@rollbar configPath='.config/rollbar.json' }
  */
 
 if (dust) {
 	dust.helpers.rollbar = function(chunk, context, bodies, params) {
-		const conf = ''// context.resolve(params.rollbarConfig) || defaultConfig
-		console.log(context);
+		let conf;
+		
+		if (context.get('rollbarConfig')) {
+			// we have a rollbar config in our context, attempt to parse it
+			try {
+				conf = JSON.stringify(context.get('rollbarConfig'));
+			}	catch (e) {
+				console.error('Error parsing rollbarConfig from Dust context');
+				throw e;
+			}
+		} else if (params.configPath) {
+			// we have a path from which we will attempt to parse the rollbar config
+			try {
+				conf = JSON.stringify(require(path.join(baseDir, params.configPath)));
+			} catch (e) {
+				console.error('Error reading Rollbar config from filesystem')
+				throw e;
+			}
+		} else {
+			throw new Error('No Rollbar config was provided to rollie');
+			return;
+		}
+
 		const head = `
 			<script>
 				var _rollbarConfig = ${conf};
 				${rollbarSnippet}
 			</script>
 		`
-
-		return chunk.write(chunk);
-	}
+		return chunk.write(head);
 }
