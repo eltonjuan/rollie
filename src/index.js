@@ -1,4 +1,5 @@
 import {rollbarSnippet} from './rollbar-snippet';
+import assign from 'object-assign';
 import path from 'path';
 
 if (dust) {
@@ -17,6 +18,8 @@ if (dust) {
       // we have a path from which we will attempt to parse the rollbar config
       try {
         conf = require(path.join(baseDir, params.configPath));
+        // delete from params so we can merge additional params below
+        delete params.configPath;
       } catch (e) {
         console.error('Error reading Rollbar config from filesystem')
         throw e;
@@ -26,11 +29,7 @@ if (dust) {
       return;
     }
 
-    Object.keys(params).map(key => {
-      if (conf.hasOwnProperty(key)) {
-        conf[key] = params[key];
-      }
-    });
+    assign(conf, params);
 
     const head = `
       <script>

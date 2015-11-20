@@ -11,7 +11,12 @@
   "bugs": {
     "url": "https://github.com/eltonjuan/rollie/issues"
   },
-  "keywords": ["dust", "rollbar", "rollbar dust", "client rollbar"],
+  "keywords": [
+    "dust",
+    "rollbar",
+    "rollbar dust",
+    "client rollbar"
+  ],
   "author": "Michael Amos",
   "repository": {
     "type": "git",
@@ -20,5 +25,8 @@
   "license": "MIT",
   "devDependencies": {
     "babel": "^6.1.18"
+  },
+  "dependencies": {
+    "object-assign": "^4.0.1"
   }
 }
