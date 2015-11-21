@@ -75,6 +75,34 @@ var _rollbarConfig = {
 };
 ```
 
+#### Scrubbing Values
+Often times, there are values that exist in your `rollbar.json` that you don't want to expose to the client, the `serverAccessToken`, for example. Rollie allows for an optional `scrub` parameter to be passed to the Dust helper. This parameter can either be a single value or an Array of values that represent the keys to be removed from the Rollbar configuration object before it is rendered to your Dust template. Take the example below: 
+
+```javascript
+// rollbar.json
+var _rollbarConfig = {
+  SUPER_SECRET_INFO: 'xxxxxxxx',
+  environment: 'production',
+  captureUncaught: true
+}
+```
+
+```html
+<head>
+    {@rollbar configPath="config/rollbar.json" scrub="SUPER_SECRET_INFO" /}
+</head>
+```
+
+Will result in: 
+
+```javascript
+// rollbar.json
+var _rollbarConfig = {
+  environment: 'production',
+  captureUncaught: true
+};
+```
+
 **Note:** Rollie doesn't make any attempt to validate your Rollbar configuration object! So take a look at their [docs](https://rollbar.com/docs/notifier/rollbar.js/) and follow the instructions!
 
 ![Rollie Fingers](https://i.imgur.com/QUhKvJ7.jpg)

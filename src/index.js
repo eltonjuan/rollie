@@ -29,6 +29,18 @@ if (dust) {
       return;
     }
 
+    if (params.scrub) {
+      if (params.scrub instanceof Array) {
+        params.scrub.forEach(k => {
+          delete conf[k];
+        });
+      } else {
+        delete conf[params.scrub];
+      }
+    }
+
+    delete params.scrub;
+
     assign(conf, params);
 
     const head = `
