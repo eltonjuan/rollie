@@ -41,7 +41,7 @@ if (dust) {
 
     delete params.scrub;
 
-    assign(conf, params);
+    conf = assign(conf, params);
 
     const head = `
       <script>
