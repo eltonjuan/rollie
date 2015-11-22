@@ -21,12 +21,11 @@ if (dust) {
         // delete from params so we can merge additional params below
         delete params.configPath;
       } catch (e) {
-        console.error('Error reading Rollbar config from filesystem')
+        console.error('Error reading Rollbar config from filesystem');
         throw e;
       }
     } else {
       throw new Error('No Rollbar config was provided to rollie');
-      return;
     }
 
     if (params.scrub) {
@@ -48,7 +47,7 @@ if (dust) {
         var _rollbarConfig = ${JSON.stringify(conf)};
         ${rollbarSnippet}
       </script>
-    `
+    `;
     return chunk.write(head);
-  }
+  };
 }
