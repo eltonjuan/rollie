@@ -1,0 +1,17 @@
+{
+  "extends": "xo/esnext",
+  "rules": {
+    "indent": [2, 2],
+    "camelcase": 0,
+    "space-before-function-paren": 0,
+    "no-else-return": 0,
+    "no-new": 0,
+    "new-cap": 0,
+    "no-trailing-spaces": 0,
+    "prefer-reflect": 0,
+    "babel/generator-star-spacing": 0
+  },
+  "globals": {
+    "dust": true
+  }
+}

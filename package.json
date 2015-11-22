@@ -6,6 +6,7 @@
   "scripts": {
     "prepublish": "npm run build",
     "build": "babel src --out-dir dist --copy-file",
+    "lint": "eslint src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bugs": {
@@ -24,7 +25,11 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "babel": "^6.1.18"
+    "babel": "^6.1.18",
+    "babel-eslint": "^4.1.5",
+    "eslint": "^1.10.1",
+    "eslint-config-xo": "^0.8.0",
+    "eslint-plugin-babel": "^2.1.1"
   },
   "dependencies": {
     "object-assign": "^4.0.1"
