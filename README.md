@@ -44,15 +44,16 @@ With the second option, Rollie will use the application's entry point by referen
 To allow for more dynamic setting of configuration properties, Rollie will automatically overwrite properties provided as params to the Dust helper that exist in the Rollbar configuration object. For example, take the following config. object / corresponding Dust template: 
 
 ```javascript
-// rollbar.json
-var _rollbarConfig = {
-  accessToken: '1234567890',
-  captureUncaught: true,
-  environment: 'development',
-  payload: {
+// config/rollbar.json
+{
+  "accessToken": "1234567890",
+  "captureUncaught": true,
+  "environment": "development",
+  "payload": {
     // ...
   }
-};
+}
+
 ```
 
 ```html
@@ -64,7 +65,7 @@ var _rollbarConfig = {
 Will result in: 
 
 ```javascript
-// rollbar.json
+
 var _rollbarConfig = {
   accessToken: '1234567890',
   captureUncaught: true,
@@ -79,24 +80,23 @@ var _rollbarConfig = {
 Often times, there are values that exist in your `rollbar.json` that you don't want to expose to the client, the `serverAccessToken`, for example. Rollie allows for an optional `scrub` parameter to be passed to the Dust helper. This parameter can either be a single value or an Array of values that represent the keys to be removed from the Rollbar configuration object before it is rendered to your Dust template. Take the example below: 
 
 ```javascript
-// rollbar.json
-var _rollbarConfig = {
-  SUPER_SECRET_INFO: 'xxxxxxxx',
-  environment: 'production',
-  captureUncaught: true
+// config/rollbar.json
+{
+  "SUPER_SECRET_INFO": "xxxxxxxx",
+  "environment": "production",
+  "captureUncaught": true
 }
 ```
 
 ```html
 <head>
-    {@rollbar configPath="config/rollbar.json" scrub="SUPER_SECRET_INFO" /}
+    {@rollbar configPath="config/rollbar.json" scrub="SUPER_SECRET_INFO" /};
 </head>
 ```
 
 Will result in: 
 
 ```javascript
-// rollbar.json
 var _rollbarConfig = {
   environment: 'production',
   captureUncaught: true
