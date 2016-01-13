@@ -5,6 +5,12 @@ import path from 'path';
 if (dust) {
   dust.helpers.rollbar = function(chunk, context, bodies, params) {
     let conf;
+    if (typeof(self) !== 'undefined' && self === window) {
+      if (document.getElementById('rollbar-snippet')) {
+        // if we're in the browser and the snippet already exists, return out.
+        return;
+      }
+    }
     const baseDir = path.join(path.dirname(require.main.filename));
     if (context.get('rollbarConfig')) {
       // we have a rollbar config in our context, attempt to parse it
@@ -22,7 +28,6 @@ if (dust) {
         delete params.configPath;
       } catch (e) {
         console.error('Error reading Rollbar config from filesystem');
-        throw e;
       }
     } else {
       throw new Error('No Rollbar config was provided to rollie');
@@ -43,7 +48,7 @@ if (dust) {
     conf = assign(conf, params);
 
     const head = `
-      <script>
+      <script id="rollbar-snippet">
         var _rollbarConfig = ${JSON.stringify(conf)};
         ${rollbarSnippet}
       </script>
